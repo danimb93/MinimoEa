@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <button (click)="toAddStudent()" ion-button icon-right round large block>
+      Estudiantes
+      <ion-icon name="md-add-circle"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+      <ion-searchbar
+        [(ngModel)]="search"
+        [showCancelButton]="shouldShowCancel">
+      </ion-searchbar>
+      <ion-list>
+        <ion-item-sliding *ngFor="let s of students">
+          <ion-item>
+            <h2>{{s.nombre}} {{s.apellido}}</h2>
+            <p>Edad: {{s.edad}}</p>
+            <p>{{s.genero}}</p>
+          </ion-item>
+          <ion-item-options side="left">
+           <!-- <button (click)="toDetails(s._id)" ion-button color="primary">
+              <ion-icon name=list></ion-icon>
+              Alumnos
+            </button>
+            -->
+          </ion-item-options>
+          <ion-item-options side="right">
+            <button (click)="deleteStudent(s._id)" ion-button color="danger">
+              <ion-icon name=trash></ion-icon>
+              Borrar
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </ion-content>
